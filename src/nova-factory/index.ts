@@ -3,9 +3,10 @@ import { Service } from "../interfaces/service.interface";
 import { Storage } from "../interfaces/storage.interface";
 import NovaLogger from "./logger";
 import { FileManager } from "../utils/file-manager";
-import { join } from "path";
+import { join, dirname } from "path";
 
 export type NovaConfig = {
+  rootDir:string
   services?: Service[];
   storage?: Storage;
 };
@@ -13,15 +14,17 @@ export type NovaConfig = {
 const logger = new NovaLogger();
 
 export class Nova {
+  rootDir:string;
   server: Server;
   services: Service[];
   storage: Storage | null;
 
-  constructor({ services, storage }: NovaConfig) {
+  constructor({ services, storage, rootDir }: NovaConfig) {
     this.server = new Server({
       port: 3000,
       host: "0.0.0.0",
     });
+    this.rootDir = rootDir
     this.services = services ? [...services] : [];
     this.storage = storage ? storage : null;
   }
@@ -39,7 +42,7 @@ export class Nova {
   async loadControllers() {
     const files = new FileManager();
     return await files.loadControllers(
-      join(__dirname, `../../test-source/controllers/`)
+      join(this.rootDir, `./controllers`)
     );
   }
 

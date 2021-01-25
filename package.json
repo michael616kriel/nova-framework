@@ -12,7 +12,6 @@
     "develop": "npm run build:live",
     "build": "tsc",
     "build:live": "nodemon --watch './src/**/*.ts' --exec \"ts-node\" ./src/index.ts",
-    "prepare": "npm run build"
   },
   "keywords": [],
   "author": "",

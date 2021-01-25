@@ -1,4 +1,1 @@
-declare module "nova" {
-
-  }
-  
+// <reference types="typescript" />

@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-  "types": "src/nova.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "develop": "npm run build:live",
-    "build": "tsc -p .",
+    "build": "tsc",
     "build:live": "nodemon --watch './src/**/*.ts' --exec \"ts-node\" ./src/index.ts",
     "prepare": "npm run build"
   },

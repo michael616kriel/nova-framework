@@ -40,7 +40,7 @@ These instructions will get the project up and running on your local machine for
 ### Installing
 
 ```
-npm i nova
+npm i nova-framework
 ```
 
 
@@ -51,7 +51,7 @@ End with an example of getting some data out of the system or using it for a lit
 Creating a basic HTTP server:
 
 ```
-import { Nova, LocalStorage } from "nova";
+import { Nova, LocalStorage } from "nova-framework";
 
 const novaServer = new Nova({
   rootDir: __dirname, // root source directory
@@ -70,7 +70,7 @@ novaServer.listen().then(() => {
 Adding and configuring services :
 
 ```
-import { Nova, Graphql, WebSocket } from "nova";
+import { Nova, Graphql, WebSocket } from "nova-framework";
 
 const novaServer = new Nova({
   services: [
@@ -98,7 +98,7 @@ const novaServer = new Nova({
 Creating HTTP controllers:
 
 ```
-import { Controller } from "nova";
+import { Controller } from "nova-framework";
 
 class Users extends Controller {
   constructor() {
@@ -115,7 +115,7 @@ class Users extends Controller {
 Creating Custom Service:
 
 ```
-import { Service } from "nova";
+import { Service } from "nova-framework";
 
 class CustomService extends Service {
   constructor(config) {

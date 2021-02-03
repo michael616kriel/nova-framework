@@ -1,5 +1,5 @@
 {
-  "name": "nova",
+  "name": "nova-framework",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -11,6 +11,7 @@
     "start": "ts-node ./src/index.ts",
     "develop": "npm run build:live",
     "build": "tsc",
+    "publish": "npm publish",
     "build:live": "nodemon --watch './src/**/*.ts' --exec \"ts-node\" ./src/index.ts"
   },
   "keywords": [],

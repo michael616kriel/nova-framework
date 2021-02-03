@@ -25,7 +25,7 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Nova is a framework that is intended to help setup and maintain servers and integrations with ease. It allows you to setup and configure Graphql, Kafka, Redis, GRPC, Knex, and SocketIO and easily have access to them accross your application without installing any additional dependencies. Custom integrations of any other packages are super simple to do.
+Nova is a framework that is intended to help setup and maintain servers and integrations with ease. It allows you to setup and configure Graphql, Kafka, Redis, GRPC, Knex, and SocketIO and easily have access to them across your application without installing any additional dependencies. Custom integrations of any other packages are super simple to do.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 

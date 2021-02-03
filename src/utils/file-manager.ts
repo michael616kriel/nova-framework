@@ -12,7 +12,7 @@ export class FileManager {
   async loadControllers(srcPath: string) {
     const apis = await readdirSync(srcPath);
     this.controllers = apis.map(
-      (dir) => require(join(srcPath, dir)) as Controller
+      (dir) => require(join(srcPath, dir)).default as Controller
     );
     return this.controllers;
   }

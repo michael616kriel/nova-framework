@@ -6,7 +6,9 @@ export interface IController {
 
 export class Controller implements IController {
     router: Router
+    endpoint:string
     constructor(){
+        this.endpoint = '/'
         this.router = Router();
     }
 }

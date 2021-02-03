@@ -42,15 +42,38 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Server = void 0;
 var express_1 = __importDefault(require("express"));
 var http_1 = require("http");
+var file_manager_1 = require("../utils/file-manager");
+var path_1 = require("path");
 var Server = /** @class */ (function () {
     function Server(config) {
         this.config = config;
         this.express = express_1.default();
         this.server = new http_1.Server(this.express);
-        this.express.get('/', function (req, res) {
+        this.express.get("/", function (req, res) {
             res.send("Welcome to Nova!");
         });
     }
+    Server.prototype.loadControllers = function (rootDir) {
+        return __awaiter(this, void 0, void 0, function () {
+            var express, files, controllers;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        express = this.express;
+                        files = new file_manager_1.FileManager();
+                        return [4 /*yield*/, files.loadControllers(path_1.join(rootDir, "./controllers"))];
+                    case 1:
+                        controllers = _a.sent();
+                        controllers.forEach(function (ctlr) {
+                            // @ts-ignore figure out how to instatiate class properly
+                            var controller = new ctlr();
+                            express.use(controller.endpoint, controller.router);
+                        });
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     Server.prototype.listen = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _a, server, _b, port, host;

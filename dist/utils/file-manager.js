@@ -51,7 +51,7 @@ var FileManager = /** @class */ (function () {
                     case 0: return [4 /*yield*/, fs_1.readdirSync(srcPath)];
                     case 1:
                         apis = _a.sent();
-                        this.controllers = apis.map(function (dir) { return require(path_1.join(srcPath, dir)); });
+                        this.controllers = apis.map(function (dir) { return require(path_1.join(srcPath, dir)).default; });
                         return [2 /*return*/, this.controllers];
                 }
             });

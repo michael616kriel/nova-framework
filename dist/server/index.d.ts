@@ -10,5 +10,6 @@ export declare class Server {
     server: HttpServer;
     config: ServerConfig;
     constructor(config: ServerConfig);
+    loadControllers(rootDir: string): Promise<void>;
     listen(): Promise<void>;
 }

@@ -49,16 +49,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Nova = void 0;
 var integrations_1 = require("../integrations");
 var logger_1 = __importDefault(require("./logger"));
-var file_manager_1 = require("../utils/file-manager");
-var path_1 = require("path");
 var logger = new logger_1.default();
 var Nova = /** @class */ (function () {
     function Nova(_a) {
-        var services = _a.services, storage = _a.storage;
+        var services = _a.services, storage = _a.storage, rootDir = _a.rootDir;
         this.server = new integrations_1.Server({
             port: 3000,
             host: "0.0.0.0",
         });
+        this.rootDir = rootDir;
         this.services = services ? __spreadArrays(services) : [];
         this.storage = storage ? storage : null;
     }
@@ -70,25 +69,12 @@ var Nova = /** @class */ (function () {
     Nova.prototype.addService = function (service) {
         this.services.push(service);
     };
-    Nova.prototype.loadControllers = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var files;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        files = new file_manager_1.FileManager();
-                        return [4 /*yield*/, files.loadControllers(path_1.join(__dirname, "../../test-source/controllers/"))];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
     Nova.prototype.beforeStart = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.loadControllers()];
+                    case 0: return [4 /*yield*/, this.server.loadControllers(this.rootDir)];
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, Promise.all(this.services.map(function (service) { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {

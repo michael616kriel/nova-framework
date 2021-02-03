@@ -4,5 +4,6 @@ export interface IController {
 }
 export declare class Controller implements IController {
     router: Router;
+    endpoint: string;
     constructor();
 }

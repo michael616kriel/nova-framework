@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.2.3",
-    "@grpc/proto-loader": "^0.5.5",
+    "@grpc/proto-loader": "^0.6.4",
     "@types/amqplib": "^0.5.17",
     "@types/knex": "^0.16.1",
     "@types/lodash": "^4.14.168",
